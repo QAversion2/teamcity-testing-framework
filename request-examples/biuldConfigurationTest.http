@@ -1,0 +1,129 @@
+##делаею не как по видео
+GET http://admin2:admin2@192.168.1.10:8111/app/rest/projects
+autorization:eyJ0eXAiOiAiVENWMiJ9.Z3c0a0tiYjdIWUI3NmpYUjR0MTM4ajF2elc4.N2IwYTA1NGItZDZmYS00NTY5LTgxMjktYzFiNmQ5OThhOTc3
+Accept: application/json
+
+
+### Get all projects
+GET http://admin2:admin2@192.168.1.10:8111/app/rest/projects/
+Accept: application/json
+
+
+
+
+
+
+
+
+
+
+### 2. Create build configuration
+# @no-cookie-jar
+POST http://admin2:admin2@192.168.1.10:8111/app/rest/buildTypes
+autorization: eyJ0eXAiOiAiVENWMiJ9.Z3c0a0tiYjdIWUI3NmpYUjR0MTM4ajF2elc4.N2IwYTA1NGItZDZmYS00NTY5LTgxMjktYzFiNmQ5OThhOTc3
+Content-Type: application/json
+Accept: application/json
+
+
+{
+  "id": "id7",
+  "name": "build_4",
+  "project": {
+    "id": "SpringCoreForQa"
+  },
+  "steps": {
+    "count": 1,
+    "step": [
+      {
+        "id": "Print_Hello_World",
+        "name": "Print Hello World",
+        "type": "simpleRunner",
+        "properties": {
+          "property": [
+            {
+              "name": "script.content",
+              "value": "echo \"Hello, world!\""
+            },
+            {
+              "name": "teamcity.step.mode",
+              "value": "default"
+            },
+            {
+              "name": "use.custom.script",
+              "value": "true"
+            }
+          ],
+          "count": 3
+        }
+      }
+    ]
+  }
+}
+
+
+### 3. Run build
+# @no-cookie-jar
+POST http://admin2:admin2@192.168.1.10:8111/app/rest/buildQueue
+autorization:eyJ0eXAiOiAiVENWMiJ9.Z3c0a0tiYjdIWUI3NmpYUjR0MTM4ajF2elc4.N2IwYTA1NGItZDZmYS00NTY5LTgxMjktYzFiNmQ5OThhOTc3
+Content-Type: application/json
+Accept: application/json
+Authorization: Basic admin admin
+
+{
+  "buildType": {
+    "id": "id3"
+  }
+}
+
+
+
+
+
+###
+GET http://admin:admin@192.168.1.10:8111/authenticationTest.html?csrf
+Accept: application/json
+
+###
+POST http://admin:admin@192.168.1.10:8111/app/rest/projects
+
+Content-Type: application/json
+
+{
+    "parentProject": {
+        "locator": "locator"
+    },
+    "name": "name",
+    "id": "id",
+    "copyAllAssociatedSettings": true
+}
+
+
+
+
+
+
+
+
+###
+### Constants
+@host = 192.168.1.10
+
+### Generated test data
+@projectId = {{$random.alphabetic(10)}}
+@buildTypeId = {{$random.alphabetic(10)}}
+
+### 1. Create project
+# @no-cookie-jar
+POST http://192.168.1.10:8111/app/rest/projects
+Content-Type: application/json
+Accept: application/json
+Authorization: Basic admin admin
+
+{
+  "parentProject": {
+    "locator": "_Root"
+  },
+  "name": "{{projectId}}",
+  "id": "{{projectId}}",
+  "copyAllAssociatedSettings": true
+}
