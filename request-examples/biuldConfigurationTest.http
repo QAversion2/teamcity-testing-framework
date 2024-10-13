@@ -1,6 +1,8 @@
 ##делаею не как по видео
-GET http://admin2:admin2@192.168.1.10:8111/app/rest/projects
-autorization:eyJ0eXAiOiAiVENWMiJ9.Z3c0a0tiYjdIWUI3NmpYUjR0MTM4ajF2elc4.N2IwYTA1NGItZDZmYS00NTY5LTgxMjktYzFiNmQ5OThhOTc3
+#GET http://admin2:admin2@192.168.1.10:8111/app/rest/projects/id:SpringCoreForQa
+GET http://admin2:admin2@192.168.1.10:8111/app/rest/buildTypes/id:SpringCoreForQa_Build
+//GET http://admin2:admin2@192.168.1.10:8111/app/rest/projects
+//autorization:eyJ0eXAiOiAiVENWMiJ9.Z3c0a0tiYjdIWUI3NmpYUjR0MTM4ajF2elc4.N2IwYTA1NGItZDZmYS00NTY5LTgxMjktYzFiNmQ5OThhOTc3
 Accept: application/json
 
 
