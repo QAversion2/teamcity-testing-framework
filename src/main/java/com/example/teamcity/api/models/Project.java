@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Project extends BaseModel {
+    @Random
     private String id;
     @Random
     private String name;
-    @Builder.Default
-    private String locator = "_Root";
+    private String locator;
 }
