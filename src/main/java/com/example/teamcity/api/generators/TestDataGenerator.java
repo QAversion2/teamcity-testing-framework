@@ -83,6 +83,7 @@ public final class TestDataGenerator {
     }
 
     public static TestData generate() {
+        // Идем по всем полям TestData и для каждого, кто наследник BaseModel вызывыем generate() c передачей уже сгенерированных сущностей
         try {
             var instance = TestData.class.getDeclaredConstructor().newInstance();
             var generatedModels = new ArrayList<BaseModel>();
