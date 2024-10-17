@@ -1,15 +1,16 @@
 package com.example.teamcity.api.requests.unchecked;
 
 import com.example.teamcity.api.enums.Endpoint;
+import com.example.teamcity.api.generators.TestDataStorage;
 import com.example.teamcity.api.models.BaseModel;
 import com.example.teamcity.api.requests.CrudInterface;
 import com.example.teamcity.api.requests.Request;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class UncheckedBase extends Request implements CrudInterface {
-
 
     public UncheckedBase(RequestSpecification spec, Endpoint endpoint) {
         super(spec, endpoint);
@@ -17,8 +18,11 @@ public class UncheckedBase extends Request implements CrudInterface {
 
     @Override
     public Response create(BaseModel model) {
+        TestDataStorage.getStorage().addCreatedEntity(endpoint, model);
         return RestAssured
                 .given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
                 .spec(spec)
                 .body(model)
                 .post(endpoint.getUrl());
@@ -28,6 +32,8 @@ public class UncheckedBase extends Request implements CrudInterface {
     public Response read(String id) {
         return RestAssured
                 .given()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .spec(spec)
                 .get(endpoint.getUrl() + "/id:" + id);
     }
@@ -36,8 +42,8 @@ public class UncheckedBase extends Request implements CrudInterface {
     public Response update(String id, BaseModel model) {
         return RestAssured
                 .given()
-                .body(model)
                 .spec(spec)
+                .body(model)
                 .put(endpoint.getUrl() + "/id:" + id);
     }
 

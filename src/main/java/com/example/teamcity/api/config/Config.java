@@ -35,6 +35,11 @@ public class Config {
     }
 
     public static String getProperty(String key) {
-        return getConfig().properties.getProperty(key);
+        String property = getConfig().properties.getProperty(key);
+        if (property == null) {
+            throw new RuntimeException("Property not found by key: " + key);
+        } else {
+            return property;
+        }
     }
 }
