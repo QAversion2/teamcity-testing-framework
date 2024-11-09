@@ -10,6 +10,7 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
+
 public class BaseTest {
     protected SoftAssert softy;
     private RequestSpecification superUserAuthorizationSpec = Specifications.superUserSpec();
