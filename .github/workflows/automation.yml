@@ -20,9 +20,11 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
 
-      - name: Validate Checkstyle
+      - name: Check Version
         run: chmod +x ./mvnw --version
 #        run: chmod +x ./mvnw validate
+      - name: Validate Checkstyle
+        run: chmod +x ./mvnw validate
 
   run-tests:
     needs: validate-checkstyle
