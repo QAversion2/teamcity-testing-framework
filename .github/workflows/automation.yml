@@ -21,7 +21,7 @@ jobs:
           distribution: 'zulu'
 
       - name: Validate Checkstyle
-        run: ./mvnw --version
+        run: chmod +x ./mvnw --version
 #        run: chmod +x ./mvnw validate
 
   run-tests:
