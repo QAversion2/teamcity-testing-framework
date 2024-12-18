@@ -20,11 +20,12 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
 
+      - name: Make mvnw executable
+        run: chmod +x ./mvnw
       - name: Check Version
-        run: chmod +x ./mvnw --version
-#        run: chmod +x ./mvnw validate
-      - name: Validate Checkstyle
-        run: chmod +x ./mvnw validate
+        run: ./mvnw --version
+      - name: Run Maven validate
+        run: ./mvnw validate
 
   run-tests:
     needs: validate-checkstyle
