@@ -61,10 +61,14 @@ runs:
         -p 8111:8111 \
         jetbrains/teamcity-server:2023.11.1
 
+    - name: Make mvnw executable
+      run: chmod +x ./mvnw
+      shell: bash
+
     - name: Setup TeamCity server
       shell: bash
       # Настройка сервера при первом запуске (принятие лицензии, выбор базы данных и тд), реализованная в виде теста
-      run: sudo ./mvnw clean test -Dtest=SetupServerTest#setupTeamCityServerTest
+      run: ./mvnw clean test -Dtest=SetupServerTest#setupTeamCityServerTest
 
     - name: Setup superUserToken environment variable
       shell: bash
