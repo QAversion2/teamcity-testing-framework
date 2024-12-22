@@ -23,12 +23,6 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>${selenide.version}</version>
@@ -37,12 +31,6 @@
             <groupId>com.codeborne</groupId>
             <artifactId>selenide-testng</artifactId>
             <version>7.3.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-selenide</artifactId>
-            <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
